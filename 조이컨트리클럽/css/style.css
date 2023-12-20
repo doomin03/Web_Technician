@@ -1,0 +1,348 @@
+/* css에서 인코딩 방식을 UTF-8로 설정 (시험볼 때 꼭 해줘야함!!) */
+@charset "UTF-8";
+
+/* '*' 표시는 전체 html 요소에 적용하겠다는 전체 선택자 */
+* {
+    /* css에서는 기본적인 margin 값과 padding 값이 있어서 둘 다 0으로 초기화 */
+    margin: 0;
+    padding: 0;
+    /* padding이나 border 크기 상관 없이 width, height 값으로 고정되게 설정 */
+    box-sizing: border-box;
+    /* a 태그를 사용했을 때 나오는 밑줄 제거 */
+    text-decoration: none;
+    /* li 태그 사용했을 때 뜨는 점 표시 제거 */
+    list-style: none;
+    /* 문제에서 제시한 기본 텍스트 색 적용 */
+    color: #333;
+}
+
+/* 컨테이너의 바로 밑에 있는 헤더, 콘텐츠를 가로로 정렬하기 위해 display: flex;를 사용 */
+.container {
+    display: flex;
+}
+
+/* 헤더의 너비와 높이를 문제에서 제시한대로 적용 */
+header {
+    width: 200px;
+    height: 850px;
+}
+
+.logo {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    
+    align-items: center;
+}
+
+/* 모든 이미지에는 부모요소에 너비와 높이를 지정하고 */
+/* 이미지에는 너비와 높이를 100%로 그리고 object-fit: cover;로 이미지 가로세로 비율이 유지되게 적용 */
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu {
+    width: 160px;
+    margin: 20px;
+}
+
+.menu a {
+    width: 100%;
+    height: 50px;
+    /* line-height는 세로 정렬을 지정한 픽셀의 가운데로 정렬 (height와 동일한 px값을 사용) */
+    line-height: 50px;
+    padding-left: 5px;
+    /* a 태그는 너비와 높이를 그냥 설정해도 적용이 안되므로 display: block;을 사용 */
+    display: block;
+}
+
+.menu>li>ul {
+    /* display: none;은 해당 요소를 안보이게 해줌. */
+    display: none;
+}
+
+.menu>li:hover>a {
+    /* 메인 메뉴에 마우스를 올렸을 때 배경색과 글자색을 변경 (하이라이트 적용) */
+    background-color: olive;
+    color: white;
+}
+
+.menu>li>ul>li:hover>a {
+    /* 서브 메뉴에 마우스를 올렸을 때 배경색과 글자색을 변경 (하이라이트 적용) */
+    background-color: olivedrab;
+    color: white;
+}
+
+.spot-menu {
+    display: flex;
+    /* 가로 정렬이 가운데로 오게 제작 */
+    justify-content: center;
+}
+
+.spot-menu>li {
+    margin: 5px;
+}
+
+.contents {
+    /* 값을 계산할 수 있는 css 함수인 calc() 함수 (연산자 양쪽에 꼭 띄어쓰기 해주기!!!) */
+    width: calc(100% - 200px);
+    /* 자식요소가 position: absolute;를 사용했을 때 해당 요소의 바깥으로 벗어나지 않게 설정 */
+    position: relative;
+}
+
+.slide {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    /* 자식 요소들이 해당 영역을 벗어나면 안보이게 가려주는 속성 (overflow: hidden;) */
+    overflow: hidden;
+}
+
+.slide>a {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* 처음 페이지에 들어갔을 때 슬라이드가 안보이게 top: 100%;로 설정 */
+    top: 100%;
+    left: 0;
+}
+
+/* 첫 슬라이드 이미지는 보이게 top: 0;으로 설정 */
+.slide>a:nth-child(1) {
+    top: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.slide .text {
+    color: white;
+    /* position: absolute;를 사용했을 때 가운데 정렬하는 방법은 */
+    /* top: 50%; left: 50%;를 적용한 후에 transform: translate(-50%, -50%); 사용 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 각각 폰트의 두께와 폰트 크기를 설정 */
+    font-weight: bold;
+    font-size: 28px;
+    /* 텍스트의 가로정렬을 가운데로 정렬 */
+    text-align: center;
+}
+
+.banner {
+    width: 100%;
+    height: 200px;
+    /* padding과 margin 속성의 값이 */
+    /* 한개일 경우에는 상하좌우 전체 */
+    /* 두개일 경우에는 상하, 좌우 */
+    /* 세개일 경우에는 상, 좌우, 하 */
+    /* 네개일 경우에는 시계방향으로 상, 우, 하, 좌 */
+    padding: 20px 50px;
+    position: relative;
+}
+
+.banner>a {
+    width: 100%;
+    height: 160px;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    /* 외곽선 그리는 속성 (두께, 선 타입, 선 색상) 순으로 사용 */
+    border: 1px solid black;
+}
+
+.banner img {
+    width: 240px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.banner .text {
+    margin: 0 50px;
+    font-size: 18px;
+}
+
+.banner .arrow {
+    position: absolute;
+    top: 20px;
+    right: 120px;
+    font-size: 100px;
+}
+
+.notice-gallery {
+    width: 100%;
+    height: 250px;
+    padding: 10px 50px;
+    position: relative;
+}
+
+.tab-menu {
+    width: 240px;
+    /* 선이 겹치는 것을 방지하기 위해 높이를 41로 변경하고 margin-bottom: -1px;로 조정 */
+    height: 41px;
+    margin-bottom: -1px;
+    margin-left: 30px;
+    display: flex;
+    border: 1px solid black;
+}
+
+.tab-menu>a {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+/* 갤러리 탭 부분에서 왼쪽 선 적용 후 배경은 검정, 텍스트는 흰색으로 적용 */
+.tab-menu>a:nth-child(2) {
+    border-left: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
+.notice,
+.gallery {
+    width: calc(100% - 100px);
+    height: 189px;
+    padding: 20px 40px;
+    position: absolute;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.notice li {
+    width: 100%;
+    padding: 7px 70px 7px 0;
+    border-bottom: 1px solid black;
+}
+
+/* 날짜 부분만 오른쪽으로 정렬 */
+.notice span {
+    float: right;
+}
+
+/* 동시에 position: absolute;를 주게 되면 html에서 아래쪽에 있는 요소가 더 위에 있게 됨. */
+/* 여기서 z값을 조절해주는 속성이 z-index 속성 */
+.gallery {
+    z-index: -1;
+    display: flex;
+    /* 가로로 정렬하되, 자식요소들 사이의 여백을 동일하게 적용 */
+    justify-content: space-evenly;
+}
+
+.gallery img {
+    width: 300px;
+    height: 150px;
+    border: 1px solid black;
+    object-fit: cover;
+}
+
+.quick {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.quick>a {
+    width: 120px;
+    height: 100px;
+    text-align: center;
+}
+
+.quick img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+}
+
+.popup {
+    width: 700px;
+    height: 300px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; 
+}
+
+.popup>h3 {
+    margin-bottom: 20px;
+}
+
+.popup>p {
+    /* 줄간격을 2로 설정 (word에서 사용하는 줄간격과 동일) */
+    line-height: 2;
+}
+
+.close-btn {
+    /* 버튼을 너비랑 높이를 지정하기보다 padding 값으로 주는 것이 더 좋음. */
+    padding: 4px 8px;
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+footer>.logo {
+    /* 로고를 무채색(흑백)으로 바꿔주는 코드 */
+    /* 로고 흑백은 포토샵에서 적용 후 이미지로 사용하는 것을 추천! */
+    -webkit-filter: grayscale(100%);
+    filter: gray;
+}
+
+footer>.copyright {
+    width: calc(100% - 500px);
+    text-align: center;
+}
+
+footer>.sns {
+    display: flex;
+}
+
+footer .icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    /* 아이콘에서 텍스트를 가운데로 정렬하는 두 가지 방법 */
+    /* 방법 1 */
+    line-height: 50px;
+    text-align: center;
+    /* 방법 2 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius는 외곽 선을 깎아주는 속성 */
+    border-radius: 50%;
+    font-size: 22px;
+    color: white;
+}
+
+.facebook {
+    background-color: blue;
+}
+
+.instagram {
+    background-color: crimson;
+}
+
+.x {
+    background-color: black;
+}
